@@ -50,7 +50,6 @@ fun ClientsPage(modifier: Modifier = Modifier) {
                 .padding(bottom = 16.dp)
         )
 
-
         Text(
             text = "Intervenha proativamente para melhorar a retenção de clientes.",
             fontSize = 16.sp,
