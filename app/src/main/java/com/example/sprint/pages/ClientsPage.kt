@@ -23,11 +23,11 @@ import coil.compose.rememberImagePainter
 fun ClientsPage(modifier: Modifier = Modifier) {
 
     val clients = listOf(
-        Client("João da Silva", "Cliente VIP", "https://avatars.githubusercontent.com/u/72618276?v=4"),
-        Client("Maria Oliveira", "Cliente Regular", "https://cm1.aminoapps.com/8811/4f5ff1a226e4696e12f2d15fa227619eef6072bc_375.jpg"),
-        Client("Carlos Souza", "Cliente Premium", "https://cdn.openart.ai/uploads/image_IddZC4Ig_1697515226348_raw.jpg"),
-        Client("Ana Pereira", "Cliente Novo", "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/8db6457f-da57-464f-b7ba-5247aeedc20b/dcb13iq-0dae8c28-6f04-46bd-9625-bfb1e229f674.png/v1/fill/w_1024,h_1024,q_80,strp/grimm__hollow_knight__by_trixxedheart_dcb13iq-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTAyNCIsInBhdGgiOiJcL2ZcLzhkYjY0NTdmLWRhNTctNDY0Zi1iN2JhLTUyNDdhZWVkYzIwYlwvZGNiMTNpcS0wZGFlOGMyOC02ZjA0LTQ2YmQtOTYyNS1iZmIxZTIyOWY2NzQucG5nIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.ovxa3pwqCfp6wfV0gNsweP-Nte9C5IvV-7GCcxG4Hwo"),
-        Client("Pedro Santos", "Cliente Antigo", "https://via.placeholder.com/100")
+        Client("João da Silva", "Situação Grave", "https://avatars.githubusercontent.com/u/72618276?v=4"),
+        Client("Maria Oliveira", "Situação Grave", "https://cm1.aminoapps.com/8811/4f5ff1a226e4696e12f2d15fa227619eef6072bc_375.jpg"),
+        Client("Carlos Souza", "Situação Regular", "https://cdn.openart.ai/uploads/image_IddZC4Ig_1697515226348_raw.jpg"),
+        Client("Ana Pereira", "Situação Regular", "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/8db6457f-da57-464f-b7ba-5247aeedc20b/dcb13iq-0dae8c28-6f04-46bd-9625-bfb1e229f674.png/v1/fill/w_1024,h_1024,q_80,strp/grimm__hollow_knight__by_trixxedheart_dcb13iq-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTAyNCIsInBhdGgiOiJcL2ZcLzhkYjY0NTdmLWRhNTctNDY0Zi1iN2JhLTUyNDdhZWVkYzIwYlwvZGNiMTNpcS0wZGFlOGMyOC02ZjA0LTQ2YmQtOTYyNS1iZmIxZTIyOWY2NzQucG5nIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.ovxa3pwqCfp6wfV0gNsweP-Nte9C5IvV-7GCcxG4Hwo"),
+        Client("Pedro Santos", "Situação Positiva", "https://via.placeholder.com/100")
     )
 
     Column(
@@ -38,15 +38,28 @@ fun ClientsPage(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.Start
     ) {
 
+
         Text(
-            text = "Clientes",
+            text = "Clientes em Risco de Rotatividade",
             fontSize = 32.sp,
+            lineHeight = 35.sp,
             fontWeight = FontWeight.Bold,
             color = Color(0xFF19326A),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 16.dp)
         )
+
+
+        Text(
+            text = "Intervenha proativamente para melhorar a retenção de clientes.",
+            fontSize = 16.sp,
+            color = Color(0xFF53B4E9),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 16.dp)
+        )
+
 
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
@@ -82,7 +95,6 @@ fun ClientItem(client: Client) {
 
         Spacer(modifier = Modifier.width(16.dp))
 
-
         Column(
             modifier = Modifier.weight(1f),
             verticalArrangement = Arrangement.spacedBy(8.dp)
@@ -100,7 +112,6 @@ fun ClientItem(client: Client) {
                 color = Color(0xFF53B4E9)
             )
         }
-
 
         Button(
             onClick = { },
