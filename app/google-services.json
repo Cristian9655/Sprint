@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "832951775128",
+    "project_id": "sprint-fc7de",
+    "storage_bucket": "sprint-fc7de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832951775128:android:d39a2dd69c0f44330445ed",
+        "android_client_info": {
+          "package_name": "com.example.sprint"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWjFONUFv4m0PsNoUQK1PHlpWrJ82UPp8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
