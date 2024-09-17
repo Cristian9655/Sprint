@@ -83,7 +83,7 @@ app/
 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/SeuUsuario/SeuProjeto.git
+git clone https://github.com/Cristian9655/Sprint.git
 ```
 
 2. Abra o projeto no **Android Studio**.
