@@ -60,7 +60,11 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.firebase.auth)
     implementation(libs.androidx.runtime.livedata)
-    implementation("io.coil-kt:coil-compose:2.4.0") // Adicionando Coil para carregar imagens
+    implementation("io.coil-kt:coil-compose:2.4.0")
+    implementation(libs.firebase.firestore.ktx)
+    implementation(libs.androidx.foundation.android)
+    implementation(libs.androidx.room.common)
+    implementation(libs.androidx.room.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

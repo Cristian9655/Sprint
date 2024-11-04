@@ -33,13 +33,21 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.draw.clipToBounds
 import coil.compose.AsyncImage
 import com.example.sprint.AuthState
+import com.example.sprint.ClientViewModel
 import com.example.sprint.authViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun HomePage(modifier: Modifier = Modifier, navController: NavController, authViewModel: authViewModel) {
-
+fun HomePage(
+    modifier: Modifier = Modifier,
+    navController: NavController, // Certifique-se de que o NavController está sendo passado aqui
+    authViewModel: authViewModel
+) {
+    // Instancia o ClientViewModel
+    val clientViewModel: ClientViewModel = viewModel()
     val authState = authViewModel.authState.observeAsState()
 
+    // Verifica o estado de autenticação e redireciona para a tela de login, se necessário
     LaunchedEffect(authState.value) {
         when (authState.value) {
             is AuthState.Unauthenticated -> navController.navigate("login")
@@ -189,7 +197,13 @@ fun HomePage(modifier: Modifier = Modifier, navController: NavController, authVi
                     }
 
                     "clients" -> {
-                        ClientsPage()
+                        ClientsPage(
+                            navController = navController, // Passa o navController aqui
+                            clientViewModel = clientViewModel,
+                            onClientDetail = { clientId ->
+                                navController.navigate("client_detail/$clientId")
+                            }
+                        )
                     }
 
                     "profile" -> {
