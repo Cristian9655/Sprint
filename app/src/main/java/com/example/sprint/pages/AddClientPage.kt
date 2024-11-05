@@ -3,9 +3,13 @@ package com.example.sprint.pages
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -13,6 +17,9 @@ import com.example.sprint.ClientViewModel
 import com.example.sprint.repository.Client
 import kotlinx.coroutines.launch
 
+import androidx.compose.foundation.border
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddClientPage(
     navController: NavController,
@@ -24,53 +31,85 @@ fun AddClientPage(
     var clientName by remember { mutableStateOf("") }
     var clientCPF by remember { mutableStateOf("") }
     var clientPhone by remember { mutableStateOf("") }
-
-    // Estado para o campo de Pontuação de Risco
     var riskScore by remember { mutableStateOf("Conservador") }
     var expanded by remember { mutableStateOf(false) }
 
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.Top
+            .background(Color(0xFFE5F4FB))
+            .padding(20.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text("Adicionar Cliente", fontSize = 24.sp, modifier = Modifier.padding(bottom = 16.dp))
+        Text(
+            "Adicionar Cliente",
+            fontSize = 28.sp,
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier.padding(bottom = 24.dp)
+        )
 
         TextField(
             value = clientName,
             onValueChange = { clientName = it },
             label = { Text("Nome do Cliente") },
-            modifier = Modifier.fillMaxWidth()
+            colors = TextFieldDefaults.textFieldColors(
+                containerColor = Color.White,
+                focusedIndicatorColor = MaterialTheme.colorScheme.primary,
+                unfocusedIndicatorColor = Color.Gray
+            ),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 4.dp),
+            shape = RoundedCornerShape(8.dp)
         )
-        Spacer(modifier = Modifier.height(8.dp))
 
+        // CPF
         TextField(
             value = clientCPF,
             onValueChange = { clientCPF = it },
             label = { Text("CPF") },
-            modifier = Modifier.fillMaxWidth()
+            colors = TextFieldDefaults.textFieldColors(
+                containerColor = Color.White,
+                focusedIndicatorColor = MaterialTheme.colorScheme.primary,
+                unfocusedIndicatorColor = Color.Gray
+            ),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 4.dp),
+            shape = RoundedCornerShape(8.dp)
         )
-        Spacer(modifier = Modifier.height(8.dp))
 
+        // Celular
         TextField(
             value = clientPhone,
             onValueChange = { clientPhone = it },
             label = { Text("Celular") },
-            modifier = Modifier.fillMaxWidth()
+            colors = TextFieldDefaults.textFieldColors(
+                containerColor = Color.White,
+                focusedIndicatorColor = MaterialTheme.colorScheme.primary,
+                unfocusedIndicatorColor = Color.Gray
+            ),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 4.dp),
+            shape = RoundedCornerShape(8.dp)
         )
-        Spacer(modifier = Modifier.height(8.dp))
 
-        // Campo de seleção para Pontuação de Risco com DropdownMenu
-        Text("Pontuação de Risco", fontSize = 16.sp, modifier = Modifier.padding(bottom = 8.dp))
-        Box(modifier = Modifier
-            .fillMaxWidth()
-            .clickable { expanded = true }
-            .background(MaterialTheme.colorScheme.surface)
-            .padding(16.dp)) {
+        Spacer(modifier = Modifier.height(16.dp))
 
-            Text(riskScore, color = MaterialTheme.colorScheme.onSurface)
-
+        Text("Pontuação de Risco", fontSize = 16.sp, color = Color.Gray)
+        Spacer(modifier = Modifier.height(16.dp))
+        Box(
+            modifier = Modifier
+                .border(1.dp, Color.Gray, RoundedCornerShape(8.dp))
+                .fillMaxWidth()
+                .clickable { expanded = true }
+                .background(Color.White, shape = RoundedCornerShape(8.dp))
+                .padding(16.dp)
+        ) {
+            Text(riskScore)
             DropdownMenu(
                 expanded = expanded,
                 onDismissRequest = { expanded = false }
@@ -99,7 +138,7 @@ fun AddClientPage(
             }
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(24.dp))
 
         Button(
             onClick = {
@@ -112,20 +151,21 @@ fun AddClientPage(
                             riskScore = riskScore
                         )
                     )
-                    // Limpa os campos após a adição
                     clientName = ""
                     clientCPF = ""
                     clientPhone = ""
                     riskScore = "Conservador"
-
-                    // Retorna para a tela de lista de clientes
                     navController.navigate("clients")
                 }
             },
-            enabled = clientName.isNotBlank() && clientCPF.isNotBlank() && clientPhone.isNotBlank() && riskScore.isNotBlank(),
-            modifier = Modifier.fillMaxWidth()
+            enabled = clientName.isNotBlank() && clientCPF.isNotBlank() && clientPhone.isNotBlank(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 8.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
+            shape = RoundedCornerShape(8.dp)
         ) {
-            Text("Adicionar Cliente")
+            Text("Adicionar Cliente", color = Color.White, fontWeight = FontWeight.SemiBold)
         }
     }
 }

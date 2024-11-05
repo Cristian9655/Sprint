@@ -18,7 +18,7 @@ import com.example.sprint.pages.SignupPage
 @Composable
 fun MyAppNavigation(modifier: Modifier = Modifier, authViewModel: authViewModel) {
     val navController = rememberNavController()
-    val clientViewModel: ClientViewModel = viewModel() // Instancia o ClientViewModel
+    val clientViewModel: ClientViewModel = viewModel()
 
     NavHost(navController = navController, startDestination = "login") {
         composable("login") {

@@ -82,7 +82,7 @@ fun LoginPage(modifier: Modifier = Modifier, navController: NavController, authV
                 value = password,
                 onValueChange = { password = it },
                 label = { Text(text = "Senha") },
-                textStyle = androidx.compose.ui.text.TextStyle(color = Color(0xFF53B4E9)), // Cor do texto
+                textStyle = androidx.compose.ui.text.TextStyle(color = Color(0xFF53B4E9)),
                 shape = RoundedCornerShape(8.dp),
                 singleLine = true
             )

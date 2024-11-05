@@ -9,8 +9,7 @@ data class Client(
     val name: String = "",
     val cpf: String = "",
     val phone: String = "",
-    val riskScore: String = "", // Conservador, Moderado, Arrojado
-    val imageUrl: String = ""
+    val riskScore: String = "",
 )
 
 class ClientRepository {
@@ -18,7 +17,7 @@ class ClientRepository {
     private val firestore = FirebaseFirestore.getInstance()
     private val clientsCollection = firestore.collection("clients")
 
-    // Read - Obter todos os clientes
+    //Obter todos os clientes
     suspend fun getClients(): List<Client> {
         return try {
             clientsCollection.get().await().documents.mapNotNull { it.toObject<Client>()?.copy(id = it.id) }
@@ -27,19 +26,19 @@ class ClientRepository {
         }
     }
 
-    // Create - Adicionar novo cliente
+    //Adicionar novo cliente
     suspend fun addClient(client: Client) {
         clientsCollection.add(client).await()
     }
 
-    // Update - Atualizar dados do cliente
+    //Atualizar dados do cliente
     suspend fun updateClient(client: Client) {
         client.id.takeIf { it.isNotEmpty() }?.let {
             clientsCollection.document(it).set(client).await()
         }
     }
 
-    // Delete - Remover cliente
+    //Remover cliente
     suspend fun deleteClient(clientId: String) {
         clientsCollection.document(clientId).delete().await()
     }
